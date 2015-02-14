@@ -9,8 +9,8 @@ Gem::Specification.new do |gem|
   gem.license       = "MIT"
 
   gem.executables   = []
-  gem.files         = `git ls-files | grep -Ev '^(myapp|examples)'`.split("\n")
-  gem.test_files    = `git ls-files -- test/*`.split("\n")
+  gem.files         = `git ls-files`.split("\n")
+  gem.test_files    = `git ls-files -- spec/*`.split("\n")
   gem.name          = "nlp-pure"
   gem.require_paths = ["lib"]
   gem.version       = NlpPure::VERSION
