@@ -8,7 +8,7 @@ Natural language processing algorithms implemented in pure Ruby with minimal dep
 
 NOTE: this is not affiliated with, endorsed by, or in any way connected with [Pure NLP](http://purenlp.com/), a trademark of John La Valle.
 
-This project aims to provide functionality similar to [Treat](https://github.com/louismullie/treat), [open-nlp](https://github.com/louismullie/open-nlp), and [stanford-core-nlp](https://rubygems.org/gems/stanford-core-nlp) but with fewer dependencies.
+This project aims to provide functionality similar to [Treat](https://github.com/louismullie/treat), [open-nlp](https://github.com/louismullie/open-nlp), and [stanford-core-nlp](https://rubygems.org/gems/stanford-core-nlp) but with fewer dependencies. The code is tested against English language but the algorithm implementations aim to be flexible for other languages.
 
 ## Requirements
 
