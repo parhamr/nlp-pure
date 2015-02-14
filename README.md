@@ -1,6 +1,6 @@
 # NLP Pure
 
-[![Code Climate](https://codeclimate.com/github/parhamr/nlp-pure.png)](https://codeclimate.com/github/parhamr/nlp-pure) 
+[![Code Climate](https://codeclimate.com/github/parhamr/nlp-pure/badges/gpa.svg)](https://codeclimate.com/github/parhamr/nlp-pure)
 [![Build Status](https://travis-ci.org/parhamr/nlp-pure.svg?branch=master)](https://travis-ci.org/parhamr/nlp-pure) 
 [![Coverage Status](https://coveralls.io/repos/parhamr/nlp-pure/badge.png?branch=master)](https://coveralls.io/r/parhamr/nlp-pure) 
 
@@ -10,13 +10,32 @@ NOTE: this is not affiliated with, endorsed by, or in any way connected with [Pu
 
 This project aims to provide functionality similar to [Treat](https://github.com/louismullie/treat), [open-nlp](https://github.com/louismullie/open-nlp), and [stanford-core-nlp](https://rubygems.org/gems/stanford-core-nlp) but with fewer dependencies. The code is tested against English language but the algorithm implementations aim to be flexible for other languages.
 
+
 ## Requirements
 
 TODO
 
+
 ## Installation
 
-TODO: `gem install 'nlp-pure'`
+Add this line to your application’s Gemfile:
+
+```
+gem 'nlp-pure'
+```
+
+And then execute:
+
+```
+$ bundle
+```
+
+Or install it yourself as:
+
+```
+$ gem install nlp-pure
+```
+
 
 ## Supported Ruby Versions
 
