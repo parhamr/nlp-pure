@@ -1,0 +1,105 @@
+AllCops:
+  Exclude:
+    - Guardfile
+    - 'vendor/**/*'
+
+  RunRailsCops: false
+
+AlignParameters:
+  Enabled: false
+ClassAndModuleChildren:
+  Enabled: false
+Encoding:
+  Enabled: false
+LineLength:
+  Max: 200
+HashSyntax:
+  Exclude:
+    - Rakefile
+    - 'spec/**/*'
+    - 'test/**/*'
+
+# Don't fail on whitespace between method names and arguments
+Style/SingleSpaceBeforeFirstArg:
+  Enabled: false
+
+# Indent private/protected/public as deep as method definitions
+Style/AccessModifierIndentation:
+  EnforcedStyle: indent
+  SupportedStyles:
+    - outdent
+    - indent
+
+Style/AlignHash:
+
+  # table - left alignment of keys, hash rockets, and values
+  EnforcedHashRocketStyle: table
+  # table - left alignment of keys and values
+  EnforcedColonStyle: key
+
+  EnforcedLastArgumentHashStyle: always_inspect
+
+Style/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
+
+Style/AndOr:
+  # Whether `and` and `or` are banned only in conditionals (conditionals)
+  # or completely (always).
+  EnforcedStyle: always
+
+# Checks if usage of %() or %Q() matches configuration.
+Style/BarePercentLiterals:
+  EnforcedStyle: percent_q
+
+Style/BracesAroundHashParameters:
+  EnforcedStyle: context_dependent
+
+# Checks formatting of special comments
+Style/CommentAnnotation:
+  Keywords:
+    - TODO
+    - FIXME
+    - OPTIMIZE
+    - HACK
+    - REVIEW
+    - PCI
+    - LEGAL
+    - NOTE
+
+Style/IndentationWidth:
+  # Number of spaces for each indentation level.
+  Width: 2
+
+Style/DotPosition:
+  EnforcedStyle: trailing
+
+Style/EmptyLineBetweenDefs:
+  # If true, this parameter means that single line method definitions don't
+  # need an empty line between them.
+  AllowAdjacentOneLineDefs: false
+
+Style/EmptyLinesAroundBlockBody:
+  EnforcedStyle: no_empty_lines
+
+Style/EmptyLinesAroundClassBody:
+  EnforcedStyle: no_empty_lines
+
+Style/EmptyLinesAroundModuleBody:
+  EnforcedStyle: no_empty_lines
+
+# Checks whether the source file has a utf-8 encoding comment or not
+Style/Encoding:
+  EnforcedStyle: when_needed
+
+Style/HashSyntax:
+  EnforcedStyle: ruby19
+
+Style/MethodName:
+  EnforcedStyle: snake_case
+
+# Allow safe assignment in conditions.
+Style/ParenthesesAroundCondition:
+  AllowSafeAssignment: true
+
+Style/RaiseArgs:
+  EnforcedStyle: exploded

@@ -28,3 +28,4 @@ Gemfile.lock
 /lib/bundler/man/
 
 *.swp
+.DS_Store

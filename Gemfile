@@ -16,5 +16,7 @@ end
 group :test do
   gem 'rake'
   gem 'rspec', '~> 3.0.0'
+  gem 'guard-rspec'
+  gem 'guard-rubocop'
   gem 'coveralls', require: false
 end
