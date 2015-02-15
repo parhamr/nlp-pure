@@ -1,3 +1,7 @@
+# 0.0.3
+
+Fixed bug in `NlpPure::Segmenting::DefaultWord` where double hyphens and spaced dashes would segment as empty words.
+
 # 0.0.2
 
 Added `NlpPure::Segmenting::DefaultWord` module for segmenting text into words.
