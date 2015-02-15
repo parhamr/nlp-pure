@@ -6,7 +6,7 @@ module NlpPure
     module DefaultWord
       DEFAULT_OPTIONS = {
         # hyphen, en dash, em dash, and string
-        split: /[\-–—\s]/
+        split: /[\-–—\s]+/
       }.freeze
       def self.parse(*args)
         unless args.nil? || args.empty?
