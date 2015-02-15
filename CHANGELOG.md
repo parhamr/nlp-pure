@@ -1,3 +1,7 @@
+# 0.0.5
+
+Fixed bug in `NlpPure::Segmenting::DefaultWord` where leading ellipses could produce extra segmented words.
+
 # 0.0.4
 
 Fixed bug in `NlpPure::Segmenting::DefaultWord` where ellipses without spaces would not segment.
