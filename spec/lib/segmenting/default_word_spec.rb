@@ -18,9 +18,11 @@ describe NlpPure::Segmenting::DefaultWord do
       let(:english_twohyphen_sentence) { 'The quick brown fox--full of energy--jumps over the lazy dog.' }
       let(:english_ellipsis_sentence) { 'The quick brown fox…jumps over the lazy dog.' }
       let(:english_spaced_ellipsis_sentence) { 'The quick brown fox … jumps over the lazy dog.' }
-      let(:english_period_ellipses_sentence) { 'The quick brown fox...jumps over the lazy dog.' }
-      let(:english_trailing_ellipses_sentence) { 'The quick brown fox jumps over the lazy dog …' }
-      let(:english_spaced_period_ellipses_sentence) { 'The quick brown fox ... jumps over the lazy dog.' }
+      let(:english_period_ellipsis_sentence) { 'The quick brown fox...jumps over the lazy dog.' }
+      let(:english_leading_ellipsis_sentence) { ' … the quick brown fox jumps over the lazy dog.' }
+      let(:english_leading_period_ellipsis_sentence) { ' ... the quick brown fox jumps over the lazy dog.' }
+      let(:english_trailing_ellipsis_sentence) { 'The quick brown fox jumps over the lazy dog … ' }
+      let(:english_spaced_period_ellipsis_sentence) { 'The quick brown fox ... jumps over the lazy dog.' }
       let(:english_abbreviation_sentence) { 'The U.S.A. is a member of NATO.' }
       let(:english_simple_paragraph) { 'Mary had a little lamb. The lamb’s fleece was white as snow. Everywhere that Mary went, the lamb was sure to go.' }
       let(:english_simple_line_breaks) { "Mary had a little lamb,\nHis fleece was white as snow,\nAnd everywhere that Mary went,\nThe lamb was sure to go." }
@@ -79,15 +81,19 @@ describe NlpPure::Segmenting::DefaultWord do
         end
 
         it 'correctly segments period-ellipses' do
-          expect(NlpPure::Segmenting::DefaultWord.parse(english_period_ellipses_sentence).length).to eq(9)
+          expect(NlpPure::Segmenting::DefaultWord.parse(english_period_ellipsis_sentence).length).to eq(9)
         end
 
         it 'correctly segments spaced period-ellipses' do
-          expect(NlpPure::Segmenting::DefaultWord.parse(english_spaced_period_ellipses_sentence).length).to eq(9)
+          expect(NlpPure::Segmenting::DefaultWord.parse(english_spaced_period_ellipsis_sentence).length).to eq(9)
+        end
+
+        it 'correctly segments with leading, spaced ellipses' do
+          expect(NlpPure::Segmenting::DefaultWord.parse(english_leading_ellipsis_sentence).length).to eq(9)
         end
 
         it 'correctly segments with trailing, spaced ellipses' do
-          expect(NlpPure::Segmenting::DefaultWord.parse(english_trailing_ellipses_sentence).length).to eq(9)
+          expect(NlpPure::Segmenting::DefaultWord.parse(english_trailing_ellipsis_sentence).length).to eq(9)
         end
 
         it 'does not segment abbreviations' do
