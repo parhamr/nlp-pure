@@ -4,6 +4,8 @@ Officially leaving a non-semantic versioning scheme.
 
 Added benchmarking test.
 
+Replaced RSpec with Minitest
+
 # 0.0.5
 
 Fixed bug in `NlpPure::Segmenting::DefaultWord` where leading ellipses could produce extra segmented words.
