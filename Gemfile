@@ -15,7 +15,6 @@ end
 group :test do
   gem 'rake'
   gem 'guard-minitest'
-  gem 'minitest-colorize'
   gem 'guard-rubocop'
   gem 'coveralls', require: false
 end

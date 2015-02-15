@@ -5,6 +5,7 @@ begin
 
   require 'rake/testtask'
   Rake::TestTask.new do |t|
+    require './test/test_helper'
     t.verbose = true
     t.pattern = 'test/**/*_test.rb'
   end
