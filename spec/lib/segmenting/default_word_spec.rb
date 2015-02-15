@@ -17,6 +17,30 @@ describe NlpPure::Segmenting::DefaultWord do
         let(:english_simple_paragraph) { 'Mary had a little lamb. The lamb’s fleece was white as snow. Everywhere that Mary went, the lamb was sure to go.' }
         let(:english_simple_line_breaks) { "Mary had a little lamb,\nHis fleece was white as snow,\nAnd everywhere that Mary went,\nThe lamb was sure to go." }
 
+        context 'with `nil` argument' do
+          it 'does not raise error' do
+            expect { NlpPure::Segmenting::DefaultWord.parse(nil) }.to_not raise_error
+          end
+
+          it 'returns Array' do
+            expect(NlpPure::Segmenting::DefaultWord.parse(nil)).to be_an Array
+          end
+        end
+
+        context 'without arguments' do
+          it 'does not raise error' do
+            expect { NlpPure::Segmenting::DefaultWord.parse }.to_not raise_error
+          end
+
+          it 'returns nil' do
+            expect(NlpPure::Segmenting::DefaultWord.parse).to eq nil
+          end
+        end
+
+        it 'returns Array' do
+          expect(NlpPure::Segmenting::DefaultWord.parse(english_simple_sentence)).to be_an Array
+        end
+
         it 'correctly counts words' do
           expect(NlpPure::Segmenting::DefaultWord.parse(english_simple_sentence).length).to eq(9)
         end
