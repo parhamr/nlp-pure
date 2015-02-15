@@ -14,6 +14,8 @@ describe NlpPure::Segmenting::DefaultWord do
       let(:english_simple_sentence) { 'The quick brown fox jumps over the lazy dog.' }
       let(:english_hyphen_sentence) { 'The New York-based company hired new staff.' }
       let(:english_dash_sentence) { 'The quick brown fox—full of energy—jumps over the lazy dog.' }
+      let(:english_spaced_dash_sentence) { 'The quick brown fox — full of energy — jumps over the lazy dog.' }
+      let(:english_twohyphen_sentence) { 'The quick brown fox--full of energy--jumps over the lazy dog.' }
       let(:english_abbreviation_sentence) { 'The U.S.A. is a member of NATO.' }
       let(:english_simple_paragraph) { 'Mary had a little lamb. The lamb’s fleece was white as snow. Everywhere that Mary went, the lamb was sure to go.' }
       let(:english_simple_line_breaks) { "Mary had a little lamb,\nHis fleece was white as snow,\nAnd everywhere that Mary went,\nThe lamb was sure to go." }
@@ -51,7 +53,15 @@ describe NlpPure::Segmenting::DefaultWord do
           expect(NlpPure::Segmenting::DefaultWord.parse(english_hyphen_sentence).length).to eq(8)
         end
 
+        it 'correctly segments double-hyphen dashes' do
+          expect(NlpPure::Segmenting::DefaultWord.parse(english_twohyphen_sentence).length).to eq(12)
+        end
+
         it 'correctly segments dashes' do
+          expect(NlpPure::Segmenting::DefaultWord.parse(english_spaced_dash_sentence).length).to eq(12)
+        end
+
+        it 'correctly segments spaced dashes' do
           expect(NlpPure::Segmenting::DefaultWord.parse(english_dash_sentence).length).to eq(12)
         end
 
