@@ -3,6 +3,8 @@ Bundler::GemHelper.install_tasks
 
 begin
   require 'coveralls/rake/task'
+  Coveralls::RakeTask.new
+  
   require 'rake/testtask'
   Rake::TestTask.new do |t|
     require './test/test_helper'
