@@ -2,14 +2,9 @@ require 'bundler'
 Bundler::GemHelper.install_tasks
 
 begin
-
+  require 'coveralls/rake/task'
   require 'rake/testtask'
   Rake::TestTask.new do |t|
-    require 'coveralls'
-    Coveralls.wear_merged! do
-      add_filter '/test/'
-    end
-
     require './test/test_helper'
     t.verbose = true
     t.pattern = 'test/**/*_test.rb'
@@ -21,7 +16,7 @@ begin
     task.fail_on_error = false
   end
 
-  task :default => [:test, :rubocop]
+  task :default => [:test, :rubocop, 'coveralls:push']
 rescue LoadError => e
   STDERR << "#{e.class}: #{e.message} (#{e.backtrace[0]})"
 end
