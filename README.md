@@ -11,11 +11,6 @@ NOTE: this is not affiliated with, endorsed by, or in any way connected with [Pu
 This project aims to provide functionality similar to [Treat](https://github.com/louismullie/treat), [open-nlp](https://github.com/louismullie/open-nlp), and [stanford-core-nlp](https://rubygems.org/gems/stanford-core-nlp) but with fewer dependencies. The code is tested against English language but the algorithm implementations aim to be flexible for other languages.
 
 
-## Requirements
-
-TODO
-
-
 ## Installation
 
 Add this line to your application’s Gemfile:

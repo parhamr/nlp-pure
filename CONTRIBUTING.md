@@ -1,3 +1,5 @@
+# Contributing
+
 Pull requests are welcomed! Here’s a quick guide:
 
 1. Fork the repo.
@@ -13,11 +15,23 @@ a test!
 
 5. Push to your fork and submit a pull request.
 
-Syntax:
+
+## Project Goals
+
+* Accuracy over speed
+* One installation step (through `gem` or `bundle`)
+* Minimal runtime dependencies (beyond the standard libraries)
+* Effective collaboration (and minimized interpersonal conflict)
+* Sustainability and maintainability (this isn’t a full-time project)
+
+
+## Style Guide
+
+See also: `rake rubocop`
 
 * Two spaces, no tabs.
 * No trailing whitespace. Blank lines should not have any space.
-* Prefer &&/|| over and/or.
-* MyClass.my_method(my_arg) not my_method( my_arg ) or my_method my_arg.
-* a = b and not a=b.
+* Prefer `&& ||` over `and or`.
+* Use `MyClass.my_method(my_arg)` not `my_method( my_arg )` or `my_method my_arg`.
+* Prefer `a = b` to `a=b`.
 * Follow the conventions you see used in the source already.
