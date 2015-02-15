@@ -2,6 +2,7 @@ AllCops:
   Exclude:
     - Guardfile
     - 'vendor/**/*'
+    - 'test/**/*'
 
   RunRailsCops: false
 

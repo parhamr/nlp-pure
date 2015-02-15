@@ -2,17 +2,17 @@ require 'bundler'
 Bundler::GemHelper.install_tasks
 
 begin
-  require 'rspec/core/rake_task'
-  require 'rubocop/rake_task'
-  RSpec::Core::RakeTask.new(:spec)
 
-  task :rubocop do
-    require 'rubocop'
-    cli = RuboCop::CLI.new
-    cli.run
+  require 'rake/testtask'
+  Rake::TestTask.new do |t|
+    t.verbose = true
+    t.pattern = 'test/**/*_test.rb'
   end
 
-  task :default => [:spec, :rubocop]
+  require 'rubocop/rake_task'
+  RuboCop::RakeTask.new
+
+  task :default => [:test, :rubocop]
 rescue LoadError => e
   STDERR << "#{e.class}: #{e.message} (#{e.backtrace[0]})"
 end
