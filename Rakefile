@@ -6,7 +6,7 @@ begin
   require 'rake/testtask'
   Rake::TestTask.new do |t|
     require 'coveralls'
-    Coveralls.wear! do
+    Coveralls.wear_merged! do
       add_filter '/test/'
     end
 
