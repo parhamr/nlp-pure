@@ -1,3 +1,7 @@
+# 0.0.2
+
+Added `NlpPure::Segmenting::DefaultWord` module for segmenting text into words.
+
 # 0.0.1
 
 Repository created February 14, 2015.
