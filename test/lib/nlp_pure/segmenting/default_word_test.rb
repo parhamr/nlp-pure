@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require 'minitest/autorun'
 require 'nlp_pure/segmenting/default_word'
 
