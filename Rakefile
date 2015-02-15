@@ -5,6 +5,11 @@ begin
 
   require 'rake/testtask'
   Rake::TestTask.new do |t|
+    require 'coveralls'
+    Coveralls.wear! do
+      add_filter '/test/'
+    end
+
     require './test/test_helper'
     t.verbose = true
     t.pattern = 'test/**/*_test.rb'
