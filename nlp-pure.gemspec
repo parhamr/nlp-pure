@@ -14,7 +14,7 @@ Gem::Specification.new do |gem|
   gem.name          = 'nlp-pure'
   gem.require_paths = ['lib']
   gem.version       = NlpPure::VERSION
-  gem.add_development_dependency      'rake'
-  gem.add_development_dependency      'rspec', '~> 3.0.0'
-  gem.add_development_dependency      'coveralls'
+  gem.add_development_dependency      'rake', '~> 10.4'
+  gem.add_development_dependency      'rspec', '~> 3.0'
+  gem.add_development_dependency      'coveralls', '~> 0.7'
 end

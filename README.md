@@ -44,7 +44,7 @@ $ gem install nlp-pure
 
 ```
 $ bundle exec irb
-irb(main):001:0> require_relative './lib/nlp_pure/segmenting/default_word'
+irb(main):001:0> require 'nlp_pure/segmenting/default_word'
 => true
 irb(main):002:0> NlpPure::Segmenting::DefaultWord.parse 'The quick brown fox jumps over the lazy dog.'
 => ["The", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog."]
