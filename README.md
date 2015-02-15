@@ -10,6 +10,16 @@ NOTE: this is not affiliated with, endorsed by, or in any way connected with [Pu
 
 This project aims to provide functionality similar to [Treat](https://github.com/louismullie/treat), [open-nlp](https://github.com/louismullie/open-nlp), and [stanford-core-nlp](https://rubygems.org/gems/stanford-core-nlp) but with fewer dependencies. The code is tested against English language but the algorithm implementations aim to be flexible for other languages.
 
+## Table of Contents
+
+* [Installation](#installation)
+* [Usage](#usage)
+** [Word Segmentation](#word-segmentation)
+* [Supported Ruby Versions](#supported-ruby-versions)
+* [Versioning](#versioning)
+* [Contributing](CONTRIBUTING.md)
+* [License](LICENSE)
+* [See Also](#see-also)
 
 ## Installation
 
@@ -84,3 +94,36 @@ Constraint](http://docs.rubygems.org/read/chapter/16#page74) with two digits of 
 ```ruby
 spec.add_dependency 'nlp-pure', '~> 0.1'
 ```
+
+
+## See Also
+
+[Search “nlp” at ruby-toolbox.com](https://www.ruby-toolbox.com/search?q=nlp)
+
+* APIs
+** [alchemy_api](https://github.com/dbalatero/alchemy_api)
+** [napi-ruby](https://github.com/Maluuba/napi-ruby)
+** [poliqarpr](https://github.com/apohllo/poliqarpr)
+** [wlapi](https://github.com/arbox/wlapi)
+* Bindings and Toolkits
+** [open-nlp](https://github.com/louismullie/open-nlp)
+** [stanford-core-nlp](https://github.com/louismullie/stanford-core-nlp)
+** [treat](https://github.com/louismullie/treat)
+* Classification
+** [linnaeus](https://github.com/djcp/linnaeus)
+** [maxent_string_classifier](https://github.com/mccraigmccraig/maxent_string_classifier)
+* N-Grams
+** [ruby-ngram](https://github.com/tkellen/ruby-ngram)
+* Specific Languages
+** Polish
+*** [nlp](https://github.com/knife/nlp)
+* Stopwords
+** [clarifier](https://github.com/meducation/clarifier)
+** [stopwords](https://github.com/brez/stopwords)
+** [stopwords-filter](https://github.com/brenes/stopwords-filter)
+* Tokenization
+** [rseg](https://rubygems.org/gems/rseg)
+** [Tokenizer](https://github.com/arbox/tokenizer)
+* Word Counters
+** [words_counted](https://github.com/abitdodgy/words_counted)
+
