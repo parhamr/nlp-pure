@@ -5,8 +5,9 @@ module NlpPure
     #
     module DefaultWord
       DEFAULT_OPTIONS = {
-        # hyphen, en dash, em dash, and string
-        split: /[\-–—\s]+/
+        # 3+ periods as pseudo-ellipsis (with optional whitespace)
+        # OR hyphen, en dash, em dash, and whitespace
+        split: /\s?\.{3,}+\s?|[\s\-–—…]+/
       }.freeze
       def self.parse(*args)
         unless args.nil? || args.empty?
@@ -22,5 +23,3 @@ module NlpPure
     end
   end
 end
-
-require_relative '../segmenting'

@@ -1,3 +1,7 @@
+# 0.0.4
+
+Fixed bug in `NlpPure::Segmenting::DefaultWord` where ellipses without spaces would not segment.
+
 # 0.0.3
 
 Fixed bug in `NlpPure::Segmenting::DefaultWord` where double hyphens and spaced dashes would segment as empty words.
