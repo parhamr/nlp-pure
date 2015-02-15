@@ -1,5 +1,7 @@
 # encoding: utf-8
 require 'spec_helper'
+require 'nlp_pure/segmenting/default_word'
+
 describe NlpPure::Segmenting::DefaultWord do
   describe '[module]' do
     it 'is defined' do
@@ -9,14 +11,14 @@ describe NlpPure::Segmenting::DefaultWord do
 
   describe '.parse' do
     context 'English' do
-      context '(with default options)' do
-        let(:english_simple_sentence) { 'The quick brown fox jumps over the lazy dog.' }
-        let(:english_hyphen_sentence) { 'The New York-based company hired new staff.' }
-        let(:english_dash_sentence) { 'The quick brown fox—full of energy—jumps over the lazy dog.' }
-        let(:english_abbreviation_sentence) { 'The U.S.A. is a member of NATO.' }
-        let(:english_simple_paragraph) { 'Mary had a little lamb. The lamb’s fleece was white as snow. Everywhere that Mary went, the lamb was sure to go.' }
-        let(:english_simple_line_breaks) { "Mary had a little lamb,\nHis fleece was white as snow,\nAnd everywhere that Mary went,\nThe lamb was sure to go." }
+      let(:english_simple_sentence) { 'The quick brown fox jumps over the lazy dog.' }
+      let(:english_hyphen_sentence) { 'The New York-based company hired new staff.' }
+      let(:english_dash_sentence) { 'The quick brown fox—full of energy—jumps over the lazy dog.' }
+      let(:english_abbreviation_sentence) { 'The U.S.A. is a member of NATO.' }
+      let(:english_simple_paragraph) { 'Mary had a little lamb. The lamb’s fleece was white as snow. Everywhere that Mary went, the lamb was sure to go.' }
+      let(:english_simple_line_breaks) { "Mary had a little lamb,\nHis fleece was white as snow,\nAnd everywhere that Mary went,\nThe lamb was sure to go." }
 
+      context '(with default options)' do
         context 'with `nil` argument' do
           it 'does not raise error' do
             expect { NlpPure::Segmenting::DefaultWord.parse(nil) }.to_not raise_error

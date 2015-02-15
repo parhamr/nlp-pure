@@ -22,3 +22,5 @@ module NlpPure
     end
   end
 end
+
+require_relative '../segmenting'

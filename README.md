@@ -37,6 +37,26 @@ $ gem install nlp-pure
 ```
 
 
+## Usage
+
+
+### Word Segmentation
+
+```
+$ bundle exec irb
+irb(main):001:0> require_relative './lib/nlp_pure/segmenting/default_word'
+=> true
+irb(main):002:0> NlpPure::Segmenting::DefaultWord.parse 'The quick brown fox jumps over the lazy dog.'
+=> ["The", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog."]
+irb(main):003:0> NlpPure::Segmenting::DefaultWord.parse 'The New York-based company hired new staff.'
+=> ["The", "New", "York", "based", "company", "hired", "new", "staff."]
+irb(main):004:0> NlpPure::Segmenting::DefaultWord.parse 'The U.S.A. is a member of NATO.'
+=> ["The", "U.S.A.", "is", "a", "member", "of", "NATO."]
+irb(main):005:0> NlpPure::Segmenting::DefaultWord.parse "Mary had a little lamb,\nHis fleece was white as snow,\nAnd everywhere that Mary went,\nThe lamb was sure to go."
+=> ["Mary", "had", "a", "little", "lamb,", "His", "fleece", "was", "white", "as", "snow,", "And", "everywhere", "that", "Mary", "went,", "The", "lamb", "was", "sure", "to", "go."]
+```
+
+
 ## Supported Ruby Versions
 
 This library aims to support and is [tested against](https://travis-ci.org/parhamr/nlp-pure) the following Ruby

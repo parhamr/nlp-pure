@@ -1,5 +1,6 @@
 # encoding: utf-8
 require 'spec_helper'
+require 'nlp_pure/segmenting'
 
 describe NlpPure::Segmenting do
   describe '[module]' do
