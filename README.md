@@ -2,7 +2,7 @@
 
 [![Code Climate](https://codeclimate.com/github/parhamr/nlp-pure/badges/gpa.svg)](https://codeclimate.com/github/parhamr/nlp-pure)
 [![Build Status](https://travis-ci.org/parhamr/nlp-pure.svg?branch=master)](https://travis-ci.org/parhamr/nlp-pure) 
-[![Coverage Status](https://coveralls.io/repos/parhamr/nlp-pure/badge.png?branch=master)](https://coveralls.io/r/parhamr/nlp-pure) 
+[![Coverage Status](https://coveralls.io/repos/parhamr/nlp-pure/badge.png?branch=master)](https://coveralls.io/r/parhamr/nlp-pure?branch=master) 
 
 Natural language processing algorithms implemented in pure Ruby with minimal dependencies.
 
