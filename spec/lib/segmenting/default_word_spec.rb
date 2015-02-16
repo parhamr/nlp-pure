@@ -7,6 +7,12 @@ describe NlpPure::Segmenting::DefaultWord do
     it 'is defined' do
       expect(defined?(NlpPure::Segmenting::DefaultWord)).to be_truthy
     end
+
+    describe '::DEFAULT_OPTIONS' do
+      it 'is Hash' do
+        expect(NlpPure::Segmenting::DefaultWord::DEFAULT_OPTIONS).to be_a Hash
+      end
+    end
   end
 
   describe '.parse' do
