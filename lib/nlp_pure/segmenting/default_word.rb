@@ -16,13 +16,15 @@ module NlpPure
         ]
       }.freeze
 
-      def self.parse(*args)
+      module_function
+
+      def parse(*args)
         unless args.nil? || args.empty?
-          clean_input(args[0]).split(options[:split])
+          clean_input(args[0]).split(options.fetch(:split, nil))
         end
       end
 
-      def self.clean_input(text = nil)
+      def clean_input(text = nil)
         input = text.to_s
         # perform replacements to work around the limitations of the splitting regexp
         options.fetch(:gsub, []).each do |gsub_pair|
@@ -33,7 +35,7 @@ module NlpPure
       end
 
       # NOTE: exposed as a method for easy mock/stub
-      def self.options
+      def options
         DEFAULT_OPTIONS
       end
     end

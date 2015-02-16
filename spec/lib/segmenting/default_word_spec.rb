@@ -27,6 +27,26 @@ describe NlpPure::Segmenting::DefaultWord do
       let(:english_simple_paragraph) { 'Mary had a little lamb. The lamb’s fleece was white as snow. Everywhere that Mary went, the lamb was sure to go.' }
       let(:english_simple_line_breaks) { "Mary had a little lamb,\nHis fleece was white as snow,\nAnd everywhere that Mary went,\nThe lamb was sure to go." }
 
+      context '(with nil options)' do
+        before do
+          expect(NlpPure::Segmenting::DefaultWord).to receive(:options).at_least(:once).and_return(nil)
+        end
+
+        it 'raises NoMethodError' do
+          expect { NlpPure::Segmenting::DefaultWord.parse(english_simple_sentence) }.to raise_error
+        end
+      end
+
+      context '(with blank options)' do
+        before do
+          expect(NlpPure::Segmenting::DefaultWord).to receive(:options).at_least(:once).and_return({})
+        end
+
+        it 'returns Array' do
+          expect(NlpPure::Segmenting::DefaultWord.parse(english_simple_sentence)).to be_an Array
+        end
+      end
+
       context '(with default options)' do
         context 'with `nil` argument' do
           it 'does not raise error' do
@@ -122,6 +142,58 @@ describe NlpPure::Segmenting::DefaultWord do
               end
             ).to be < 0.1
           end
+        end
+      end
+    end
+  end
+
+  describe '.clean_input' do
+    context 'English' do
+      let(:english_leading_ellipsis_sentence) { ' … the quick brown fox jumps over the lazy dog.' }
+
+      context '(with nil options)' do
+        before do
+          expect(NlpPure::Segmenting::DefaultWord).to receive(:options).at_least(:once).and_return(nil)
+        end
+
+        it 'raises NoMethodError' do
+          expect { NlpPure::Segmenting::DefaultWord.clean_input(english_leading_ellipsis_sentence) }.to raise_error
+        end
+      end
+
+      context '(with blank options)' do
+        before do
+          expect(NlpPure::Segmenting::DefaultWord).to receive(:options).at_least(:once).and_return({})
+        end
+
+        it 'only strips whitespace' do
+          expect(NlpPure::Segmenting::DefaultWord.clean_input(english_leading_ellipsis_sentence)).to eq english_leading_ellipsis_sentence.strip
+        end
+      end
+
+      context '(with default options)' do
+        context 'with `nil` argument' do
+          it 'does not raise error' do
+            expect { NlpPure::Segmenting::DefaultWord.clean_input(nil) }.to_not raise_error
+          end
+
+          it 'returns empty String' do
+            expect(NlpPure::Segmenting::DefaultWord.clean_input(nil)).to eq ''
+          end
+        end
+
+        context 'without arguments' do
+          it 'does not raise error' do
+            expect { NlpPure::Segmenting::DefaultWord.clean_input }.to_not raise_error
+          end
+
+          it 'returns nil' do
+            expect(NlpPure::Segmenting::DefaultWord.clean_input).to eq ''
+          end
+        end
+
+        it 'modifies the input' do
+          expect(NlpPure::Segmenting::DefaultWord.clean_input(english_leading_ellipsis_sentence)).to_not eq english_leading_ellipsis_sentence
         end
       end
     end
