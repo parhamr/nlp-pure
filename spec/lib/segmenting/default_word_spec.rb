@@ -107,6 +107,22 @@ describe NlpPure::Segmenting::DefaultWord do
         it 'correctly counts with line breaks' do
           expect(NlpPure::Segmenting::DefaultWord.parse(english_simple_line_breaks).length).to eq(22)
         end
+
+        context 'benchmarking' do
+          before do
+            require 'benchmark'
+          end
+
+          it 'takes time', benchmarking: true do
+            expect(
+              Benchmark.realtime do
+                1000.times do
+                  NlpPure::Segmenting::DefaultWord.parse(english_simple_line_breaks)
+                end
+              end
+            ).to be < 0.1
+          end
+        end
       end
     end
   end
