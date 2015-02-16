@@ -2,7 +2,12 @@
 require 'rspec'
 require 'coveralls'
 
-Coveralls.wear!
+Coveralls.wear! do
+  add_filter '/vendor/'
+  add_filter '/test/'
+  add_filter '/tmp/'
+  add_filter '/spec/'
+end
 
 RSpec.configure do |config|
   config.expect_with :rspec do |c|
