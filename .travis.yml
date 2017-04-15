@@ -1,14 +1,19 @@
 language: ruby
 sudo: false
 cache: bundler
+dist: trusty
+addons:
+  apt:
+    packages:
+      - haveged
 # NOTE: these run in order
 rvm:
   - jruby
-  - rbx-2
-  - 2.0.0
-  - 2.1
-  - 2.2
+  - rbx-3.73
+  - 2.2.7
+  - 2.3.4
+  - 2.4.1
 matrix:
   allow_failures:
-    - rvm: rbx-2
+    - rvm: rbx-3.73
     - rvm: jruby

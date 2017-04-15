@@ -1,4 +1,5 @@
 # encoding: utf-8
+
 require 'time'
 require 'logger'
 
@@ -8,7 +9,7 @@ module NlpPure
   module Logging
     #
     class Pretty < Logger::Formatter
-      def call(severity, time, program_name, message)
+      def call(severity, time, _program_name, message)
         "#{time.utc.iso8601(2)} #{::Process.pid} #{severity}: #{message}\n"
       end
     end

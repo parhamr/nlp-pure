@@ -19,9 +19,8 @@ module NlpPure
       module_function
 
       def parse(*args)
-        unless args.nil? || args.empty?
-          clean_input(args[0]).split(options.fetch(:split, nil))
-        end
+        return nil if args.nil? || args.empty?
+        clean_input(args[0]).split(options.fetch(:split, nil))
       end
 
       def clean_input(text = nil)
