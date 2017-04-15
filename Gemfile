@@ -14,7 +14,5 @@ end
 
 group :test do
   gem 'rake'
-  gem 'guard-minitest'
-  gem 'guard-rubocop'
   gem 'coveralls', require: false
 end
