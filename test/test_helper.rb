@@ -1,2 +1,4 @@
 # encoding: utf-8
-SimpleCov.command_name "MiniTest #{Time.now}"
+
+require_relative 'fixtures/corpus_english_simple'
+

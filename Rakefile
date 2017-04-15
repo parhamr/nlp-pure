@@ -4,12 +4,13 @@ Bundler::GemHelper.install_tasks
 begin
   task :coverage do
     require 'coveralls'
-    Coveralls.wear_merged!
+    Coveralls.wear!
     require 'minitest'
   end
 
   require 'rake/testtask'
   Rake::TestTask.new(:test) do |t|
+    require_relative 'test/test_helper'
     t.verbose = true
     t.pattern = 'test/**/*_test.rb'
   end

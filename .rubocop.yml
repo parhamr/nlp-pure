@@ -20,6 +20,11 @@ HashSyntax:
     - Rakefile
     - 'spec/**/*'
     - 'test/**/*'
+# NLP is hard
+MethodLength:
+  Max: 15
+AbcSize:
+  Max: 22.5
 
 # Don't fail on whitespace between method names and arguments
 Style/SpaceBeforeFirstArg:
