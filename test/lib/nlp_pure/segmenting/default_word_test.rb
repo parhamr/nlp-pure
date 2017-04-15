@@ -81,7 +81,7 @@ class TestNlpPureSegmentingDefaultWord < Minitest::Test
 
       describe 'without arguments' do
         def test_parse_returns_nil
-          assert_equal nil, NlpPure::Segmenting::DefaultWord.parse
+          assert_nil NlpPure::Segmenting::DefaultWord.parse
         end
       end
 
