@@ -25,6 +25,9 @@ HashSyntax:
 Style/SpaceBeforeFirstArg:
   Enabled: false
 
+Style/SymbolArray:
+  Enabled: false
+
 # Indent private/protected/public as deep as method definitions
 Style/AccessModifierIndentation:
   EnforcedStyle: indent

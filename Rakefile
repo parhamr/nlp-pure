@@ -20,7 +20,7 @@ begin
     task.fail_on_error = false
   end
 
-  task :default => [:coverage, :test, :rubocop]
+  task default: [:coverage, :test, :rubocop]
 rescue LoadError => e
   STDERR << "#{e.class}: #{e.message} (#{e.backtrace[0]})"
 end
