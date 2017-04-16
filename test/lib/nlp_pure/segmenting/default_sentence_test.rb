@@ -92,9 +92,9 @@ class TestNlpPureSegmentingDefaultSentence < Minitest::Test
         end
 
         def test_parse_correctly_sentence_segments_longer_texts
-          assert_equal 3, NlpPure::Segmenting::DefaultSentence.parse(english_simple_paragraph).length
           assert_equal NlpPure::Segmenting::DefaultSentence.parse(english_simple_paragraph),
             ["Mary had a little lamb.", "The lamb’s fleece was white as snow.", "Everywhere that Mary went, the lamb was sure to go."]
+          assert_equal 3, NlpPure::Segmenting::DefaultSentence.parse(english_simple_paragraph).length
         end
 
         def test_parse_correctly_sentence_segments_line_breaks

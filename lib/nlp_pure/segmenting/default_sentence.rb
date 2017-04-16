@@ -65,24 +65,23 @@ module NlpPure
       def rejoin_fragments(segments, segment)
         # rejoin leading punctuation, abbreviation, and numbers
         while next_segment_appears_included?(segments[0])
-          STDERR << "\t…appending #{segments[0].inspect}\n" if ENV["DEBUG"]
+          STDERR << "\t<< #{segments[0].inspect}\n" if ENV["DEBUG"]
           segment = "#{segment}#{segments.shift}"
         end
         # rejoin ending abbreviations
         if !segments.empty? && NlpPure::Segmenting::DefaultWord.parse(segment).last.to_s.scan(options.fetch(:split, nil)).length > 1
-          STDERR << "\tAbbreviation detected! Collapsing #{segment.inspect} with #{segments[0].inspect}\n" if ENV["DEBUG"]
+          STDERR << "\t<< abbreviation: #{segment.inspect} with #{segments[0].inspect}\n" if ENV["DEBUG"]
           segment = "#{segment}#{segments.shift}"
         end
         # the final segment looks like orphaned punctuation
         if (segments.last =~ options.fetch(:split, nil)) == 0
-          STDERR << "\tLast segment is orphaned!\n" if ENV["DEBUG"]
           if segments.length <= 2
-            STDERR << "\t(collapsing trailing punctuation)\n" if ENV["DEBUG"]
-            segments = segments.join
+            STDERR << "\t<< trailing punctuation: #{segments.last}\n" if ENV["DEBUG"]
+            segment = "#{segment}#{segments.join}"
           else
-            STDERR << "\t(alternate collapse of #{segments.inspect})\n" if ENV["DEBUG"]
-            punct = segments.pop
-            segments << "#{segments.pop}#{punct}"
+            STDERR << "\t<< other: #{segments.inspect}\n" if ENV["DEBUG"]
+            punctuation = segments.pop
+            segments << "#{segments.pop}#{punctuation}"
           end
         end
         segment.strip
@@ -93,8 +92,10 @@ module NlpPure
           (
             # first character of next segment is punctuation
             segment[0].match(options.fetch(:split, nil)) ||
-            # first character of next segment is abbreviation
+            # first character of next segment is likely abbreviation
             segment[0].match(/\w/) ||
+            # greedily grab if followed by lowercase
+            segment[0].match(/\s[a-z]/) ||
             # first character of next segment is numeric
             segment[0].match(/\d/) ||
             # last word of current segment is abbreviation
