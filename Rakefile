@@ -4,7 +4,7 @@ Bundler::GemHelper.install_tasks
 begin
   task :coverage do
     require 'coveralls'
-    Coveralls.wear!
+    Coveralls.wear_merged!
     require 'minitest'
   end
 
