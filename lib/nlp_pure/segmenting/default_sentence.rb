@@ -76,7 +76,7 @@ module NlpPure
         elsif segment[0] =~ /^\w/
           STDERR << "\t! assuming abbreviation\n" if ENV['DEBUG']
         elsif segment =~ /^\s[a-z0-9]/
-          STDERR << "\t! greedily grabbing lowercase\n" if ENV['DEBUG']
+          STDERR << "\t! greedily continuing sentence\n" if ENV['DEBUG']
         elsif segment =~ /^\d/
           STDERR << "\t! leading numeral detected\n" if ENV['DEBUG']
         else
