@@ -19,6 +19,7 @@ a test!
 ## Project Goals
 
 * Accuracy over speed
+* Functionality over style
 * One installation step (through `gem` or `bundle`)
 * Minimal runtime dependencies (beyond the standard libraries)
 * Effective collaboration (and minimized interpersonal conflict)
