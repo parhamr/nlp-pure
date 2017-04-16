@@ -61,6 +61,20 @@ irb(main):005:0> NlpPure::Segmenting::DefaultWord.parse "Mary had a little lamb,
 => ["Mary", "had", "a", "little", "lamb,", "His", "fleece", "was", "white", "as", "snow,", "And", "everywhere", "that", "Mary", "went,", "The", "lamb", "was", "sure", "to", "go."]
 ```
 
+### Sentence Segmentation
+
+```
+M017-PDX:nlp-pure rp0616$ bundle exec irb
+irb(main):001:0> require 'nlp_pure/segmenting/default_sentence'
+=> true
+irb(main):002:0> NlpPure::Segmenting::DefaultSentence.parse 'The U.S.A. is a member of NATO.'
+=> ["The U.S.A. is a member of NATO."]
+irb(main):003:0> NlpPure::Segmenting::DefaultSentence.parse 'Mary had a little lamb. The lamb\U+FFE2s fleece was white as snow. Everywhere that Mary went, the lamb was sure to go.'
+=> ["Mary had a little lamb.", "The lambs fleece was white as snow.", "Everywhere that Mary went, the lamb was sure to go."]
+irb(main):004:0> NlpPure::Segmenting::DefaultSentence.parse 'I am excited! Today is Friday.'
+=> ["I am excited!", "Today is Friday."]
+```
+
 
 ## Supported Ruby Versions
 

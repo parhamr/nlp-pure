@@ -13,7 +13,8 @@ module NlpPure
         gsub:  [
           # ellipses at the start of a string are problematic; ref #12
           [/^\s?(…|\.{3,})/, ' ']
-        ]
+        ],
+        segment_boundary: ' '
       }.freeze
 
       module_function
