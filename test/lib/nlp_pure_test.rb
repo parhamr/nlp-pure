@@ -9,5 +9,9 @@ class TestNlpPure < Minitest::Test
     def test_module_is_defined
       assert_equal defined?(NlpPure), 'constant'
     end
+
+    def test_module_has_version
+      assert_equal defined?(NlpPure::VERSION), 'constant'
+    end
   end
 end
