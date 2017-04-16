@@ -32,9 +32,9 @@ module NlpPure
         segments = clean_input(args[0]).split(options.fetch(:split, nil))
         # skip rejoin if one segment
         return segments if segments.length == 1
-        returning = rejoin_segment_fragments(segments).compact
-        STDERR << "#{returning.inspect}\n" if ENV['DEBUG']
-        returning
+        parsed_segments = rejoin_segment_fragments(segments).compact
+        STDERR << "#{parsed_segments.inspect}\n" if ENV['DEBUG']
+        parsed_segments
       end
 
       def clean_input(text = nil)
@@ -86,9 +86,6 @@ module NlpPure
         true
       end
 
-      def cleanup_segmenting(segments)
-        segments.compact
-      end
     end
   end
 end
