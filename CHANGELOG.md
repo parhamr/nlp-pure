@@ -1,3 +1,7 @@
+# 0.2.0
+
+Adds sentence segmenting.
+
 # 0.1.0
 
 Officially leaving a non-semantic versioning scheme.
