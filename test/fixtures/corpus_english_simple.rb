@@ -78,4 +78,8 @@ module CorpusEnglishSimple
   def english_leading_question
     "On which side of the road do you drive? In North America we drive on the right side."
   end
+
+  def english_usa_constitution_preamble
+    "United States of America 1789 (rev. 1992)\r\nPREAMBLE\r\nWe the People of the United States, in Order to form a more perfect Union, establish Justice, insure domestic Tranquility, provide for the common defense, promote the general Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and establish this Constitution for the United States of America."
+  end
 end

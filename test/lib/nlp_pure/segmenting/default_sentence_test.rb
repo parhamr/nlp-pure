@@ -111,6 +111,12 @@ class TestNlpPureSegmentingDefaultSentence < Minitest::Test
             ["On which side of the road do you drive?", "In North America we drive on the right side."]
           assert_equal 2, NlpPure::Segmenting::DefaultSentence.parse(english_leading_question).length
         end
+
+        def test_parse_correctly_sentence_usa_constitution_preamble
+          assert_equal NlpPure::Segmenting::DefaultSentence.parse(english_usa_constitution_preamble)[0],
+            "United States of America 1789 (rev. 1992)"
+          assert_equal 3, NlpPure::Segmenting::DefaultSentence.parse(english_usa_constitution_preamble).length
+        end
       end
     end
   end
