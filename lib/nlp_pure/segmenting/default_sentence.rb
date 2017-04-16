@@ -3,10 +3,12 @@
 module NlpPure
   module Segmenting
     # SEE ALSO: Unsupervised Multilingual Sentence Boundary Detection. Kiss, Strunk; 2006.
+    # NOTE: this fails on some proper nouns with abbreviations (e.g. business names)
+    #       and fails on single-linebreak headings
     module DefaultSentence
       DEFAULT_OPTIONS = {
-        # punctuation with whitespace
-        split: /([.?!])+/,
+        # punctuation or linebreaks
+        split: /([.?!]|\n{2,}|\r\n)+/,
         # array of arrays; [0] should be regexp, [1] should be replacement
         # NOTE: minor performance risk in letting this array grow long
         gsub:  [
@@ -72,8 +74,8 @@ module NlpPure
         if segment[0] =~ options.fetch(:split, nil)
           STDERR << "\t! leading punctuation detected\n" if ENV['DEBUG']
         elsif segment[0] =~ /^\w/
-          STDERR << "\t! assuming leading abbreviation\n" if ENV['DEBUG']
-        elsif segment =~ /^\s[a-z]/
+          STDERR << "\t! assuming abbreviation\n" if ENV['DEBUG']
+        elsif segment =~ /^\s[a-z0-9]/
           STDERR << "\t! greedily grabbing lowercase\n" if ENV['DEBUG']
         elsif segment =~ /^\d/
           STDERR << "\t! leading numeral detected\n" if ENV['DEBUG']
