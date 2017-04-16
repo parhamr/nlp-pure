@@ -15,6 +15,7 @@ This project aims to provide functionality similar to [Treat](https://github.com
 * [Installation](#installation)
 * [Usage](#usage)
   * [Word Segmentation](#word-segmentation)
+  * [Sentence Segmentation](#sentence-segmentation)
 * [Supported Ruby Versions](#supported-ruby-versions)
 * [Versioning](#versioning)
 * [Contributing](CONTRIBUTING.md)
