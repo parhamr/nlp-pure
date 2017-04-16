@@ -2,6 +2,8 @@
 
 Adds sentence segmenting.
 
+Improves code style.
+
 # 0.1.0
 
 Officially leaving a non-semantic versioning scheme.
