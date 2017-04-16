@@ -6,7 +6,7 @@ begin
   Rake::TestTask.new(:test) do |t|
     if ENV['COVERAGE']
       require 'coveralls'
-      Coveralls.wear_merged!
+      Coveralls.wear!
     end
     require 'minitest'
     require_relative 'test/test_helper'
