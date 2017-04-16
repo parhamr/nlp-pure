@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 require 'minitest/autorun'
-require 'nlp_pure/segmenting'
+require_relative '../../../lib/nlp_pure/segmenting'
 
 #
 class TestNlpPureSegmenting < Minitest::Test

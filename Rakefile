@@ -2,15 +2,15 @@ require 'bundler'
 Bundler::GemHelper.install_tasks
 
 begin
-  task :coverage do
-    require 'coveralls'
-    Coveralls.wear_merged!
-    require 'minitest'
-  end
-
   require 'rake/testtask'
   Rake::TestTask.new(:test) do |t|
+    if ENV['COVERAGE']
+      require 'coveralls'
+      Coveralls.wear_merged!
+    end
+    require 'minitest'
     require_relative 'test/test_helper'
+    Dir.glob('./test/**/*_test.rb').each { |file| require file }
     t.verbose = true
     t.pattern = 'test/**/*_test.rb'
   end
@@ -21,7 +21,7 @@ begin
     task.fail_on_error = false
   end
 
-  task default: [:coverage, :test, :rubocop]
+  task default: [:test, :rubocop]
 rescue LoadError => e
   STDERR << "#{e.class}: #{e.message} (#{e.backtrace[0]})"
 end
