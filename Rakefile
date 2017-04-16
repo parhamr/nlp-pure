@@ -11,8 +11,8 @@ begin
     require 'minitest'
     require_relative 'test/test_helper'
     Dir.glob('./test/**/*_test.rb').each { |file| require file }
+    Dir.glob('./test/**/*_benchmark.rb').each { |file| require file } if ENV['BENCH']
     t.verbose = true
-    t.pattern = 'test/**/*_test.rb'
   end
 
   require 'rubocop/rake_task'
