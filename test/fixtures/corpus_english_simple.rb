@@ -76,6 +76,6 @@ module CorpusEnglishSimple
   end
 
   def english_leading_question
-    "On which side of the bed do you sleep? I prefer to be away from the window."
+    "On which side of the road do you drive? In North America we drive on the right side."
   end
 end

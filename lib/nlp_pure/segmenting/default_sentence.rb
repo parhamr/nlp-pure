@@ -30,13 +30,8 @@ module NlpPure
         segments = clean_input(args[0]).split(options.fetch(:split, nil))
         # skip rejoin if one segment
         return segments if segments.length == 1
-        # rejoin fragments:
-        #     end of sentence abbreviation
-        #     end of sentence ellipses
-        #     initials
-        #     ordinal numbers
         returning = rejoin_segment_fragments(segments).compact
-        STDERR << "#{returning}\n" if ENV["DEBUG"]
+        STDERR << "#{returning.inspect}\n" if ENV['DEBUG']
         returning
       end
 
@@ -53,54 +48,40 @@ module NlpPure
       def rejoin_segment_fragments(segments)
         reassociated_segments = []
         # take all segments
-        while segment = segments.shift
-          STDERR << "#{segment.inspect}\n" if ENV["DEBUG"]
-          next if segment.length == 1 && segment =~ options.fetch(:split, nil)
+        while (segment = segments.shift)
+          STDERR << "#{segment.inspect}\n" if ENV['DEBUG']
           # join segments if needed
-          reassociated_segments << rejoin_fragments(segments, segment)
+          reassociated_segments << handle_special_fragments(segments, segment)
         end
         reassociated_segments
       end
 
-      def rejoin_fragments(segments, segment)
-        # rejoin leading punctuation, abbreviation, and numbers
+      # rejoin leading punctuation, abbreviation, and numbers
+      def handle_special_fragments(segments, segment)
+        # NOTE: always index zero because we're shifting
         while next_segment_appears_included?(segments[0])
-          STDERR << "\t<< #{segments[0].inspect}\n" if ENV["DEBUG"]
+          STDERR << "\t\t<< #{segments[0].inspect}\n" if ENV['DEBUG']
           segment = "#{segment}#{segments.shift}"
-        end
-        # rejoin ending abbreviations
-        if !segments.empty? && NlpPure::Segmenting::DefaultWord.parse(segment).last.to_s.scan(options.fetch(:split, nil)).length > 1
-          STDERR << "\t<< abbreviation: #{segment.inspect} with #{segments[0].inspect}\n" if ENV["DEBUG"]
-          segment = "#{segment}#{segments.shift}"
-        end
-        # the final segment looks like orphaned punctuation
-        if (segments.last =~ options.fetch(:split, nil)) == 0
-          if segments.length <= 2
-            STDERR << "\t<< trailing punctuation: #{segments.last}\n" if ENV["DEBUG"]
-            segment = "#{segment}#{segments.join}"
-          else
-            STDERR << "\t<< other: #{segments.inspect}\n" if ENV["DEBUG"]
-            punctuation = segments.pop
-            segments << "#{segments.pop}#{punctuation}"
-          end
         end
         segment.strip
       end
 
       def next_segment_appears_included?(segment)
-        segment &&
-          (
-            # first character of next segment is punctuation
-            segment[0].match(options.fetch(:split, nil)) ||
-            # first character of next segment is likely abbreviation
-            segment[0].match(/\w/) ||
-            # greedily grab if followed by lowercase
-            segment[0].match(/\s[a-z]/) ||
-            # first character of next segment is numeric
-            segment[0].match(/\d/) ||
-            # last word of current segment is abbreviation
-            NlpPure::Segmenting::DefaultWord.parse(segment).length == 1
-          )
+        return false unless segment
+        # NOTE: the logic is expanded for logging reasons (despite style violation)
+        if segment[0] =~ options.fetch(:split, nil)
+          STDERR << "\t! leading punctuation detected\n" if ENV['DEBUG']
+        elsif segment[0] =~ /^\w/
+          STDERR << "\t! assuming leading abbreviation\n" if ENV['DEBUG']
+        elsif segment =~ /^\s[a-z]/
+          STDERR << "\t! greedily grabbing lowercase\n" if ENV['DEBUG']
+        elsif segment =~ /^\d/
+          STDERR << "\t! leading numeral detected\n" if ENV['DEBUG']
+        else
+          STDERR << "\t\tx\n" if ENV['DEBUG']
+          return false
+        end
+        true
       end
 
       def cleanup_segmenting(segments)

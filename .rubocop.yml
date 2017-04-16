@@ -7,24 +7,30 @@ AllCops:
 Rails:
   Enabled: false
 
+# NLP is hard
+AbcSize:
+  Max: 22.5
 AlignParameters:
   Enabled: false
 ClassAndModuleChildren:
   Enabled: false
+# NLP is hard
+CyclomaticComplexity:
+  Max: 12
 Encoding:
   Enabled: false
-LineLength:
-  Max: 200
 HashSyntax:
   Exclude:
     - Rakefile
     - 'spec/**/*'
     - 'test/**/*'
+LineLength:
+  Max: 200
 # NLP is hard
 MethodLength:
   Max: 15
-AbcSize:
-  Max: 22.5
+PerceivedComplexity:
+  Max: 12
 
 # Don't fail on whitespace between method names and arguments
 Style/SpaceBeforeFirstArg:
