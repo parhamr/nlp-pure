@@ -45,6 +45,7 @@ $ gem install nlp-pure
 
 ## Usage
 
+Simply require a library file and start using its interfaces! To preserve modularity and a small installation footprint, classes and modules are not recursively loaded up front.
 
 ### Word Segmentation
 
