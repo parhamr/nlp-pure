@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 require 'minitest/autorun'
-require 'nlp_pure/segmenting/default_sentence'
+require_relative '../../../../lib/nlp_pure/segmenting/default_sentence'
 require_relative '../../../fixtures/corpus_english_simple'
 
 #
