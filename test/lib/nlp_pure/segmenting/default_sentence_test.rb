@@ -2,7 +2,7 @@
 
 require 'minitest/autorun'
 require_relative '../../../../lib/nlp_pure/segmenting/default_sentence'
-require_relative '../../../fixtures/corpus_english_simple'
+require_relative '../../../fixtures/corpus_english_default'
 
 #
 class TestNlpPureSegmentingDefaultSentence < Minitest::Test
@@ -13,7 +13,7 @@ class TestNlpPureSegmentingDefaultSentence < Minitest::Test
   end
 
   describe '(English language)' do
-    include ::CorpusEnglishSimple
+    include ::CorpusEnglishDefault
 
     describe '.parse' do
       describe 'with `nil` argument' do
@@ -30,11 +30,11 @@ class TestNlpPureSegmentingDefaultSentence < Minitest::Test
 
       describe 'with strings' do
         def test_parse_returns_sentence_array
-          assert_instance_of Array, NlpPure::Segmenting::DefaultSentence.parse(english_simple_sentence)
+          assert_instance_of Array, NlpPure::Segmenting::DefaultSentence.parse(english_default_sentence)
         end
 
         def test_parse_correctly_counts_sentences
-          assert_equal 1, NlpPure::Segmenting::DefaultSentence.parse(english_simple_sentence).length
+          assert_equal 1, NlpPure::Segmenting::DefaultSentence.parse(english_default_sentence).length
         end
 
         def test_parse_correctly_sentence_segments_hyphens
@@ -91,13 +91,13 @@ class TestNlpPureSegmentingDefaultSentence < Minitest::Test
         end
 
         def test_parse_correctly_sentence_segments_longer_texts
-          assert_equal NlpPure::Segmenting::DefaultSentence.parse(english_simple_paragraph),
+          assert_equal NlpPure::Segmenting::DefaultSentence.parse(english_default_paragraph),
             ["Mary had a little lamb.", "The lamb’s fleece was white as snow.", "Everywhere that Mary went, the lamb was sure to go."]
-          assert_equal 3, NlpPure::Segmenting::DefaultSentence.parse(english_simple_paragraph).length
+          assert_equal 3, NlpPure::Segmenting::DefaultSentence.parse(english_default_paragraph).length
         end
 
         def test_parse_correctly_sentence_segments_line_breaks
-          assert_equal 1, NlpPure::Segmenting::DefaultSentence.parse(english_simple_line_breaks).length
+          assert_equal 1, NlpPure::Segmenting::DefaultSentence.parse(english_default_line_breaks).length
         end
 
         def test_parse_correctly_sentence_segments_exclamations

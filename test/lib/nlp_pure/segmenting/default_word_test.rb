@@ -2,7 +2,7 @@
 
 require 'minitest/autorun'
 require_relative '../../../../lib/nlp_pure/segmenting/default_word'
-require_relative '../../../fixtures/corpus_english_simple'
+require_relative '../../../fixtures/corpus_english_default'
 
 #
 class TestNlpPureSegmentingDefaultWord < Minitest::Test
@@ -13,7 +13,7 @@ class TestNlpPureSegmentingDefaultWord < Minitest::Test
   end
 
   describe '(English language)' do
-    include ::CorpusEnglishSimple
+    include ::CorpusEnglishDefault
 
     describe '.parse' do
       describe 'with `nil` argument' do
@@ -31,15 +31,15 @@ class TestNlpPureSegmentingDefaultWord < Minitest::Test
       describe 'with strings' do
 
         def test_parse_returns_word_array
-          assert_instance_of Array, NlpPure::Segmenting::DefaultWord.parse(english_simple_sentence)
+          assert_instance_of Array, NlpPure::Segmenting::DefaultWord.parse(english_default_sentence)
         end
 
         def test_parse_correctly_counts_words
-          assert_equal 9, NlpPure::Segmenting::DefaultWord.parse(english_simple_sentence).length
+          assert_equal 9, NlpPure::Segmenting::DefaultWord.parse(english_default_sentence).length
         end
 
-        def test_parse_does_not_mangle_english_simple_sentence
-          assert_equal english_simple_sentence, NlpPure::Segmenting::DefaultWord.parse(english_simple_sentence).join(NlpPure::Segmenting::DefaultWord.options[:segment_boundary])
+        def test_parse_does_not_mangle_english_default_sentence
+          assert_equal english_default_sentence, NlpPure::Segmenting::DefaultWord.parse(english_default_sentence).join(NlpPure::Segmenting::DefaultWord.options[:segment_boundary])
         end
 
         def test_parse_correctly_word_segments_hyphens
@@ -47,7 +47,7 @@ class TestNlpPureSegmentingDefaultWord < Minitest::Test
         end
 
         def test_parse_does_not_mangle_english_hyphen_sentence
-          assert_equal english_simple_sentence, NlpPure::Segmenting::DefaultWord.parse(english_simple_sentence).join(NlpPure::Segmenting::DefaultWord.options[:segment_boundary])
+          assert_equal english_default_sentence, NlpPure::Segmenting::DefaultWord.parse(english_default_sentence).join(NlpPure::Segmenting::DefaultWord.options[:segment_boundary])
         end
 
         def test_parse_correctly_word_segments_doublehyphen_dashes
@@ -91,11 +91,11 @@ class TestNlpPureSegmentingDefaultWord < Minitest::Test
         end
 
         def test_parse_correctly_word_segments_longer_texts
-          assert_equal 22, NlpPure::Segmenting::DefaultWord.parse(english_simple_paragraph).length
+          assert_equal 22, NlpPure::Segmenting::DefaultWord.parse(english_default_paragraph).length
         end
 
         def test_parse_correctly_word_segments_line_breaks
-          assert_equal 22, NlpPure::Segmenting::DefaultWord.parse(english_simple_line_breaks).length
+          assert_equal 22, NlpPure::Segmenting::DefaultWord.parse(english_default_line_breaks).length
         end
       end
     end
