@@ -1,5 +1,5 @@
-module CorpusEnglishSimple
-  def english_simple_sentence
+module CorpusEnglishDefault
+  def english_default_sentence
     'The quick brown fox jumps over the lazy dog.'
   end
 
@@ -51,11 +51,11 @@ module CorpusEnglishSimple
     'The U.S.A. is a member of NATO.'
   end
 
-  def english_simple_paragraph
+  def english_default_paragraph
     'Mary had a little lamb. The lamb’s fleece was white as snow. Everywhere that Mary went, the lamb was sure to go.'
   end
 
-  def english_simple_line_breaks
+  def english_default_line_breaks
     "Mary had a little lamb,\nHis fleece was white as snow,\nAnd everywhere that Mary went,\nThe lamb was sure to go."
   end
 

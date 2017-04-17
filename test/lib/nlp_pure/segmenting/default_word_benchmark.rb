@@ -3,14 +3,14 @@
 require 'benchmark' if ENV["BENCH"]
 require 'minitest/autorun'
 require_relative '../../../../lib/nlp_pure/segmenting/default_sentence'
-require_relative '../../../fixtures/corpus_english_simple'
+require_relative '../../../fixtures/corpus_english_default'
 
 #
 class BenchmarkNlpPureSegmentingDefaultWord < Minitest::Test
   if ENV["BENCH"]
     describe '[Benchmarking]' do
 
-      include ::CorpusEnglishSimple
+      include ::CorpusEnglishDefault
 
       def test_parse_average
         time = Benchmark.measure do
