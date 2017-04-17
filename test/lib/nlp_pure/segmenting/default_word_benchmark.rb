@@ -18,7 +18,7 @@ class BenchmarkNlpPureSegmentingDefaultWord < Minitest::Test
             NlpPure::Segmenting::DefaultWord.parse(english_abbreviation_sentence)
           end
         end
-        assert_operator time.real, :<=, 0.2
+        assert_operator time.real, :<=, 0.4
       end
     end
   end
