@@ -33,7 +33,7 @@ module NlpPure
         # skip rejoin if one segment
         return segments if segments.length == 1
         parsed_segments = rejoin_segment_fragments(segments).compact
-        STDERR << "#{parsed_segments.inspect}\n" if ENV['DEBUG']
+        NlpPure.logger.debug "#{parsed_segments.inspect}\n"
         parsed_segments
       end
 
@@ -51,7 +51,7 @@ module NlpPure
         reassociated_segments = []
         # take all segments
         while (segment = segments.shift)
-          STDERR << "#{segment.inspect}\n" if ENV['DEBUG']
+          NlpPure.logger.debug "#{segment.inspect}\n"
           # join segments if needed
           reassociated_segments << handle_special_fragments(segments, segment)
         end
@@ -62,7 +62,7 @@ module NlpPure
       def handle_special_fragments(segments, segment)
         # NOTE: always index zero because we're shifting
         while next_segment_appears_included?(segments[0])
-          STDERR << "\t\t<< #{segments[0].inspect}\n" if ENV['DEBUG']
+          NlpPure.logger.debug "\t\t<< #{segments[0].inspect}\n"
           segment = "#{segment}#{segments.shift}"
         end
         segment.strip
@@ -72,15 +72,15 @@ module NlpPure
         return false unless segment
         # NOTE: the logic is expanded for logging reasons (despite style violation)
         if segment[0] =~ options.fetch(:split, nil)
-          STDERR << "\t! leading punctuation detected\n" if ENV['DEBUG']
+          NlpPure.logger.debug "\t! leading punctuation detected\n"
         elsif segment[0] =~ /^\w/
-          STDERR << "\t! assuming abbreviation\n" if ENV['DEBUG']
+          NlpPure.logger.debug "\t! assuming abbreviation\n"
         elsif segment =~ /^\s[a-z0-9]/
-          STDERR << "\t! greedily continuing sentence\n" if ENV['DEBUG']
+          NlpPure.logger.debug "\t! greedily continuing sentence\n"
         elsif segment =~ /^\d/
-          STDERR << "\t! leading numeral detected\n" if ENV['DEBUG']
+          NlpPure.logger.debug "\t! leading numeral detected\n"
         else
-          STDERR << "\t\tx\n" if ENV['DEBUG']
+          NlpPure.logger.debug "\t\tx\n"
           return false
         end
         true
