@@ -4,6 +4,9 @@ module NlpPure
   module Segmenting
     #
     module DefaultWord
+      require_relative './default_utility'
+      extend NlpPure::Segmenting::DefaultUtility
+
       DEFAULT_OPTIONS = {
         # 3+ periods as pseudo-ellipsis (with optional whitespace)
         # OR hyphen, en dash, em dash, and whitespace
@@ -21,17 +24,7 @@ module NlpPure
 
       def parse(*args)
         return nil if args.nil? || args.empty?
-        clean_input(args[0]).split(options.fetch(:split, nil))
-      end
-
-      def clean_input(text = nil)
-        input = text.to_s
-        # perform replacements to work around the limitations of the splitting regexp
-        options.fetch(:gsub, []).each do |gsub_pair|
-          input.gsub!(gsub_pair[0], gsub_pair[1])
-        end
-        # NOTE: leading whitespace is problematic; ref #12
-        input.strip
+        clean_input_default(args[0]).split(options.fetch(:split, nil))
       end
 
       # NOTE: exposed as a method for easy mock/stub

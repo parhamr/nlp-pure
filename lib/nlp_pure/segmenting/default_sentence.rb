@@ -6,6 +6,9 @@ module NlpPure
     # NOTE: this fails on some proper nouns with abbreviations (e.g. business names)
     #       and fails on single-linebreak headings
     module DefaultSentence
+      require_relative './default_utility'
+      extend NlpPure::Segmenting::DefaultUtility
+
       DEFAULT_OPTIONS = {
         # punctuation or linebreaks
         split: /([.?!]|\n{2,}|\r\n)+/,
@@ -29,22 +32,12 @@ module NlpPure
       def parse(*args)
         return nil if args.nil? || args.empty?
         # naive split
-        segments = clean_input(args[0]).split(options.fetch(:split, nil))
+        segments = clean_input_default(args[0]).split(options.fetch(:split, nil))
         # skip rejoin if one segment
         return segments if segments.length == 1
         parsed_segments = rejoin_segment_fragments(segments).compact
         STDERR << "#{parsed_segments.inspect}\n" if ENV['DEBUG']
         parsed_segments
-      end
-
-      def clean_input(text = nil)
-        input = text.to_s
-        # perform replacements to work around the limitations of the splitting regexp
-        options.fetch(:gsub, []).each do |gsub_pair|
-          input.gsub!(gsub_pair[0], gsub_pair[1])
-        end
-        # NOTE: leading whitespace is problematic; ref #12
-        input.strip
       end
 
       def rejoin_segment_fragments(segments)
@@ -85,7 +78,6 @@ module NlpPure
         end
         true
       end
-
     end
   end
 end
