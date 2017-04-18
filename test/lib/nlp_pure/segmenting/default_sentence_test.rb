@@ -117,6 +117,11 @@ class TestNlpPureSegmentingDefaultSentence < Minitest::Test
             "United States of America 1789 (rev. 1992)"
           assert_equal 3, NlpPure::Segmenting::DefaultSentence.parse(english_usa_constitution_preamble).length
         end
+
+        def test_parse_correctly_sentence_frankenstein
+          skip("FIXME: Dr. is hard. See also: Mr. Mrs. Sr. Jr.")
+          assert_equal 2, NlpPure::Segmenting::DefaultSentence.parse(english_frankenstein_doctor).length
+        end
       end
     end
   end
